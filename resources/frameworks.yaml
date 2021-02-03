@@ -208,4 +208,11 @@ TunedRandomForest:
 #    _n_jobs: 1  # cf. RandomForest
 #    _tuning:
 #      n_estimators: 500
+NODE:
+  version: 'stable'
+  description: |
+    A Tuned Random Forest implementation (scikit-learn) trying to optimize over max_features, and used as a reference base.
+  project: http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
+  params:
+    n_estimators: 2000
 

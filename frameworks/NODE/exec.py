@@ -173,6 +173,13 @@ def run(dataset, config):
             None
         predictions = np.argmax(probabilities, axis=1)
 
+
+    save_predictions(dataset=dataset,
+                     output_file=config.output_predictions_file,
+                     probabilities=probabilities,
+                     predictions=predictions,
+                     truth=y_test)
+                     
     return result(output_file=config.output_predictions_file,
                   predictions=predictions,
                   truth=y_test,
