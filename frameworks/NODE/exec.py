@@ -11,7 +11,7 @@ from . import lib
 import math
 import time
 import numpy as np
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report, roc_auc_score, log_loss
 
 from amlb.benchmark import TaskConfig
 from amlb.data import Dataset
@@ -172,6 +172,10 @@ def run(dataset, config):
             probabilities = probabilities.cpu().numpy()
             predictions = np.argmax(probabilities, axis=1)
             print(classification_report(y_test, predictions))
+            if probabilities.shape[1] == 2:
+                print(roc_auc_score(y_test, probabilities[:,1]))
+            else:
+                print(log_loss(y_test, probabilities))
         else:
             predictions = output.cpu().numpy()
         
